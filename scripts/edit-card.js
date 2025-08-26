@@ -1,7 +1,7 @@
 // const columns = document.querySelectorAll(`.column`);
 const editModal = document.querySelector(".card-editor-wrapper");
-const buttonCancel = document.querySelector(".card-editor-wrapper").querySelector(".button-cancel");
-const buttonConfirm = document.querySelector(".card-editor-wrapper").querySelector(".button-confirm");
+const buttonCancel = editModal.querySelector(".button-cancel");
+const buttonConfirm = editModal.querySelector(".button-confirm");
 const editModalTitle = editModal.querySelector(`#ftitle`);
 const editModalDescription = editModal.querySelector(`#fdescription`);
 let currentlySelectedCard = null;
@@ -26,14 +26,14 @@ columns.forEach(column => {
 buttonConfirm.addEventListener(`click`, () => {
     currentlySelectedCard.querySelector(`h3`).textContent = editModalTitle.value;
     currentlySelectedCard.querySelector(`p`).textContent = editModalDescription.value;
-    resetModal();
+    resetEditModal();
 });
 
 buttonCancel.addEventListener(`click`, () => {
-    resetModal();
+    resetEditModal();
 });
 
-function resetModal() {
+function resetEditModal() {
     currentlySelectedCard = null;
     editModal.classList.add(`disabled`);
 };
