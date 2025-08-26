@@ -12,6 +12,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     padding: 20px;
+    overflow-x: hidden;
 }
 
 .header {
@@ -79,7 +80,6 @@ body {
     overflow: auto;
     /* display: flex; */
     flex-direction: column;
-    transition: all 0.5s ease-in-out;
 }
 
 .column-main::-webkit-scrollbar {
@@ -98,7 +98,9 @@ body {
     background-color: color-mix(in srgb, white, black 40%);
 }
 
-.column-main .card {
+/* #region card */
+
+.card {
     background-color: white;
     border-width: 1.2px;
     border-style: solid;
@@ -110,12 +112,12 @@ body {
     flex-direction: column;
     gap: 6px;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
-    transition: all 0.5s ease-in-out;
     opacity: 100%;
     overflow: hidden;
+    transition: all 0.5s ease-in-out;
 }
 
-.column-main .card.deleted-card {
+.card.deleted-card {
     opacity: 0%;
     height: 0%;
     margin-top: 0;
@@ -125,30 +127,30 @@ body {
     border-width: 0;
 }
 
-.column-main .card .card-header h3 {
+.card .card-header h3 {
     font-weight: 400;
     font-size: 18px;
 
 }
 
-.column-main .card .card-main {
+.card .card-main {
     overflow-wrap: break-word;
     hyphens: auto;
     line-height: 1.25;
  }
 
- .column-main .card .card-main p {
+.card .card-main p {
     font-weight: 300;
  }
 
- .column-main .card .card-footer {
+.card .card-footer {
     display: flex;
     justify-content: space-evenly;
  }
 
- .column-main .card .card-footer button {
+.card .card-footer button {
     font-size: 13px;
-    width: 70px;
+    min-width: 70px;
     border: none;
     border-radius: 5px;
     margin: 10px 0 0;
@@ -158,24 +160,110 @@ body {
     padding: 2px 10px;
 }
 
- .column-main .card .card-footer button:first-child {
+.card .card-footer .button-edit:first-child {
     background-color: yellow;
  }
 
- .column-main .card .card-footer button:first-child:hover {
+.card .card-footer .button-edit:first-child:hover {
     cursor: pointer;
     background-color: color-mix(in srgb, yellow, yellowgreen 15%);
 }
 
- .column-main .card .card-footer button:last-child {
+.card .card-footer .button-delete:last-child {
     background-color: red;
     color: white;
  }
 
- .column-main .card .card-footer button:last-child:hover {
+.card .card-footer .button-delete:last-child:hover {
     cursor: pointer;
     background-color: color-mix(in srgb, red, black 10%);
 }
+
+.card-editor-wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+    padding: 20px;
+}
+
+.card-editor-wrapper::before {
+    content: "";
+    background-color: black;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    opacity: 60%;
+    position: fixed;
+    z-index: -1;
+}
+
+.card-editor {
+    min-width: clamp(50rem, 1rem * 50vw, 90rem);
+    padding: 20px;
+    text-align: center;
+}
+
+.card-editor-form {
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+}
+.card-editor-form label {
+   text-align: left;
+}
+
+.card-editor-form textarea {
+    padding: 10px;
+}
+
+.card-editor-form input {
+    padding: 10px;
+}
+
+.card-editor-form textarea {
+    min-width: 30vw;
+}
+
+.card-editor-form textarea {
+    min-height: 10vw;
+}
+
+.button-cancel {
+    background-color: red;
+    color: white;
+    font-size: 17px!important;
+}
+
+.button-cancel:hover {
+    background-color: color-mix(in srgb, red, black 10%);
+    cursor: pointer;
+}
+
+.button-confirm {
+    background-color: green;
+    color: white;
+    font-size: 17px!important;
+}
+
+.button-confirm:hover {
+    background-color: color-mix(in srgb, green, black 10%);
+    cursor: pointer;
+}
+
+.disabled {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* #endregion */
 
 .column-footer {
     display: flex;
