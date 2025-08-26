@@ -26,7 +26,7 @@ columns.forEach(column => {
 buttonConfirm.addEventListener(`click`, () => {
     currentlySelectedCard.querySelector(`h3`).textContent = editModalTitle.value;
     currentlySelectedCard.querySelector(`p`).textContent = editModalDescription.value;
-    resetModal()
+    resetModal();
 });
 
 buttonCancel.addEventListener(`click`, () => {
