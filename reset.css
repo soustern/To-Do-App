@@ -44,3 +44,20 @@ h1, h2, h3, h4, h5, h6 {
 #root, #__next {
   isolation: isolate;
 }
+
+a:hover, a:visited, a:link  {
+  text-decoration: none;
+  background-color: none;
+}
+
+a.unstyled-link,
+a.unstyled-link:visited,
+a.unstyled-link:hover {
+  color: inherit;
+  text-decoration: none;
+  cursor: text;
+}
+
+a.unstyled-link:hover {
+  cursor: pointer;
+}

@@ -181,7 +181,6 @@ body {
 .card .card-footer button {
     font-size: 13px;
     min-width: 70px;
-    border: none;
     border-radius: 5px;
     margin: 10px 0 0;
     border-width: 1.2px;
@@ -315,29 +314,7 @@ body {
 
 /* #endregion */
 
-.placeholder {
-    border-radius: 10px;
-    background-color: rgba(lightgray, 0.9);
-    border-color: gray;
-    border-style: dashed;
-    /* min-height: 80px; */
-    margin-bottom: 20px;
-    /* animation-name: placeholderFadeIn; */
-    /* animation-duration: .4s; */
-    /* animation-iteration-count: 1; */
-}
-
-.card.dragging {
-    position: absolute !important;
-    text-align: center;
-    z-index: 1000;
-    pointer-events: none;
-    transition: none;
-    animation-name: shadowFadeIn;
-    animation-duration: .2s;
-    animation-timing-function: ease-out;
-    box-shadow: 0 20px 10px -10px rgba(0, 0, 0, 0.5);
-}
+/* #region animations */
 
 @keyframes shadowFadeIn {
     from {
@@ -388,4 +365,177 @@ body {
     to {
         transform: scale(1);
     }
+}
+
+/* #endregion */
+
+/* #region misc */
+
+.placeholder {
+    border-radius: 10px;
+    background-color: rgba(lightgray, 0.9);
+    border-color: gray;
+    border-style: dashed;
+    /* min-height: 80px; */
+    margin-bottom: 20px;
+    /* animation-name: placeholderFadeIn; */
+    /* animation-duration: .4s; */
+    /* animation-iteration-count: 1; */
+}
+
+.card.dragging {
+    position: absolute !important;
+    text-align: center;
+    z-index: 1000;
+    pointer-events: none;
+    transition: none;
+    animation-name: shadowFadeIn;
+    animation-duration: .2s;
+    animation-timing-function: ease-out;
+    box-shadow: 0 20px 10px -10px rgba(0, 0, 0, 0.5);
+}
+
+/* #endregion */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 clamp(20px, 5vw, 100px);
+}
+
+.header nav {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.button-select {
+    font-size: 13px;
+    min-width: 70px;
+    border: none;
+    border-radius: 5px;
+    margin: 10px 0 0;
+    border-width: 1.2px;
+    border-style: solid;
+    border-color: #ededed;
+    padding: 2px 10px;
+    background-color: rgba(255, 255, 255, .5);
+    font-size: 22px;
+    transition: all .2s ease-in-out;
+}
+
+.button-select:hover {
+    background-color: rgba(255, 255, 255, .8);
+}
+
+.button-select i {
+    transition: all .2s ease-in-out;
+}
+
+
+.arrow-turned-up {
+    transform: rotate(180deg);
+}
+
+.button-select:hover {
+    cursor: pointer;
+}
+
+.header-images-list {
+    display: flex;
+    gap: 15px;
+    background-color: rgba(255, 255, 255, 0.30);
+    backdrop-filter: blur(13px);
+    border-color: white;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+    padding: 15px;
+    border-radius: 20px;
+    position: absolute;
+    top: 95%;
+    left: -62%;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.header-images-list::after {
+    content: "";
+    background-color: transparent;
+    border-radius: 20px;
+    border-color: white;
+    border-width: 1px;
+    border-style: solid;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    pointer-events: none;
+    left: 0;
+    top: 0;
+}
+
+.header-images-list li {
+    list-style: none;
+    width: 100px;
+    overflow: hidden;
+    border-radius: 10px;
+    position: relative;
+}
+
+.header-images-list li img{
+    height: 90px;
+    width: auto;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 50;
+}
+
+.header-images-list li p{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 900;
+    color: white;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.header-images-list li div {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.header-images-list li img:hover + p{
+    opacity: 1;
+}
+
+.header-images-list li img:hover ~ div:not(.selected){
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    z-index: 50;
+}
+
+.selected {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    pointer-events: none;
+    border-radius: 10px;
+    border: 5px solid white;
+    z-index: 100;
+    opacity: 0;
+}
+
+.onScreen {
+    opacity: 1;
+    pointer-events: all;
 }
