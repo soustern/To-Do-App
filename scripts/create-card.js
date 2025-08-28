@@ -34,6 +34,7 @@ createModal.querySelector(`.button-confirm`).addEventListener(`click`, () => {
                         </div>
                     </div>`
     columnMain.insertAdjacentHTML(`afterbegin`, card);
+    columnMain.querySelector(`.card`).addEventListener(`mousedown`, dragAndDrop);
     resetCreateModal();
 });
 

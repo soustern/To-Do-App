@@ -32,6 +32,7 @@ body {
     gap: 10%;
     flex-wrap: wrap;
     justify-content: center;
+    /* position: relative; */
 }
 
 /* #region column */
@@ -89,7 +90,8 @@ body {
     height: 550px;
     overflow: auto;
     /* display: flex; */
-    flex-direction: column;
+    /* flex-direction: column; */
+    /* position: relative; */
 }
 
 .column-main::-webkit-scrollbar {
@@ -126,18 +128,15 @@ body {
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
     opacity: 100%;
     overflow: hidden;
-    transition: all 0.5s ease-in-out;
+    transition-property: opacity, height, margin, padding, border-width;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
     user-select: none;
 }
 
-.card.dragging {
-    background-color: red;
-    opacity: 0.5;
-}
-
 .card.deleted-card {
+    height: 0;
     opacity: 0%;
-    height: 0%;
     margin-top: 0;
     margin-bottom: 0;
     padding-top: 0;
@@ -302,3 +301,21 @@ body {
 }
 
 /* #endregion */
+
+.placeholder {
+    border-radius: 10px;
+    background-color: rgba(lightgray, 0.9);
+    border-color: gray;
+    border-style: dashed;
+    /* min-height: 80px; */
+    margin-bottom: 20px;
+}
+
+.card.dragging {
+    position: absolute !important;
+    background-color: red;
+    opacity: 0.5;
+    z-index: 1000;
+    pointer-events: none;
+}
+
