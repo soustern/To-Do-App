@@ -9,7 +9,12 @@ columns.forEach(column => {
         {
             currentlySelectedColumn = column;
             createModal.classList.remove('disabled');
-        }
+            const cardCreator = createModal.querySelector(`.card-creator`);
+            cardCreator.classList.add(`start-animation-jumpUp`);
+            cardCreator.addEventListener(`animationend`, function() {
+                this.classList.remove(`start-animation-jumpUp`);
+            }, {once: true});
+        };
     });
 });
 
@@ -34,12 +39,13 @@ createModal.querySelector(`.button-confirm`).addEventListener(`click`, () => {
                         </div>
                     </div>`
     columnMain.insertAdjacentHTML(`afterbegin`, card);
+
     columnMain.querySelector(`.card`).addEventListener(`mousedown`, dragAndDrop);
     resetCreateModal();
 });
 
 function resetCreateModal() {
-    let currentlySelectedColumn = null;
+    currentlySelectedColumn = null;
     createModalTitle.value = ``;
     createModalDescription.value = ``;
     createModal.classList.add('disabled');

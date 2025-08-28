@@ -18,6 +18,12 @@ columns.forEach(column => {
                 editModalTitle.value = currentlySelectedCard.querySelector(`h3`).textContent;
                 editModalDescription.value = currentlySelectedCard.querySelector(`p`).textContent;
                 editModal.classList.remove(`disabled`);
+
+                const cardEditor = editModal.querySelector(`.card-editor`);
+                cardEditor.classList.add(`start-animation-jumpUp`);
+                cardEditor.addEventListener(`animationend`, function() {
+                    this.classList.remove(`start-animation-jumpUp`);
+                }, {once: true});
             }
         };
     })

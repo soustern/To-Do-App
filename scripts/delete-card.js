@@ -12,7 +12,8 @@ columns.forEach(column => {
                     card.classList.add(`deleted-card`);
                     // setTimeout(() => card.remove(), 500);
 
-                    card.addEventListener(`transitioned`, () => {
+                    card.addEventListener(`transitionend`, () => {
+                        card.style.height = `0px`;
                         card.remove()
                     }, {once: true})
                 }

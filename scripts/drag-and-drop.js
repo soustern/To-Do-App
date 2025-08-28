@@ -5,10 +5,16 @@ let offsetX = 0;
 let offsetY = 0;
 
 cards.forEach(card => {
-    card.addEventListener(`mousedown`, dragAndDrop);
+    card.addEventListener(`animationend`, () => {
+        card.style.animationName = `none`;
+    });
+    card.addEventListener(`mousedown`, dragAndDrop);  
 });
 
 function dragAndDrop(event) {
+    // Prevent animation from happening again
+    this.style.animationName = `none`;
+
     event.preventDefault();
     if (event.target.matches(`.button-edit, .button-delete`)) return;
 
@@ -33,6 +39,9 @@ function dragAndDrop(event) {
 
     moveAt(event.pageX, event.pageY);
 
+    draggedCard.addEventListener(`animationend`, () => {
+        card.style.animationName = `none`;
+    });
     document.addEventListener(`mousemove`, onMouseMove);
     document.addEventListener(`mouseup`, onMouseUp, { once: true });
 }
@@ -81,8 +90,14 @@ function updatePlaceholderPosition(x, y) {
     if (targetColumn) {
         const afterElement = getDragAfterElement(targetColumn, y);
         if (afterElement) {
+
+            // This would be necessary to animate the placeholder
+            // if (!afterElement.previousElementSibling?.matches(`.placeholder`)){}
             targetColumn.insertBefore(placeholder, afterElement);
+
         } else {
+            // this would be necessary to animate the placeholder
+            // if (!targetColumn.querySelector(`.placeholder`)){}
             targetColumn.appendChild(placeholder);
         }
     }

@@ -95,7 +95,7 @@ body {
 }
 
 .column-main::-webkit-scrollbar {
-    width: 7px;
+    width: 3px;
 }
 
 .column-main::-webkit-scrollbar-track {
@@ -128,13 +128,21 @@ body {
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
     opacity: 100%;
     overflow: hidden;
-    transition-property: opacity, height, margin, padding, border-width;
-    transition-duration: 0.2s;
-    transition-timing-function: ease-in-out;
+    transition: all .3s ease-in-out;
     user-select: none;
+    transform-origin: top top;
+}
+
+/* need to chain the :not selectors for this to work */
+/* otherwise it will create a OR evaluation, not a AND */
+.card:not(.card-editor).card:not(.card-creator) {
+    animation-name: appearFromWithin;
+    animation-duration: .15s;
+    animation-timing-function: ease-in-out;
 }
 
 .card.deleted-card {
+    transform: scale(0.5);
     height: 0;
     opacity: 0%;
     margin-top: 0;
@@ -142,6 +150,11 @@ body {
     padding-top: 0;
     padding-bottom: 0;
     border-width: 0;
+}
+
+.card.deleted-card * {
+    transition: all .3s ease-in-out;
+    transform: scale(0.5);
 }
 
 .card .card-header h3 {
@@ -309,13 +322,70 @@ body {
     border-style: dashed;
     /* min-height: 80px; */
     margin-bottom: 20px;
+    /* animation-name: placeholderFadeIn; */
+    /* animation-duration: .4s; */
+    /* animation-iteration-count: 1; */
 }
 
 .card.dragging {
     position: absolute !important;
-    background-color: red;
-    opacity: 0.5;
+    text-align: center;
     z-index: 1000;
     pointer-events: none;
+    transition: none;
+    animation-name: shadowFadeIn;
+    animation-duration: .2s;
+    animation-timing-function: ease-out;
+    box-shadow: 0 20px 10px -10px rgba(0, 0, 0, 0.5);
 }
 
+@keyframes shadowFadeIn {
+    from {
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+    }
+    to {
+        box-shadow: 0 20px 10px -10px rgba(0, 0, 0, 0.5);
+    }
+}
+
+@keyframes placeholderFadeIn {
+    from {
+        opacity: 0;
+        height: 0;
+        margin-bottom: 0px;
+        border-style: none;
+    }
+    to {
+        opacity: 1;
+        margin-bottom: 20px;
+        border-style: dashed;
+    }
+}
+
+.start-animation-jumpUp {
+    animation-name: jumpUp !important;
+    animation-duration: .2s !important;
+    animation-timing-function: ease-out !important;
+}
+
+.animation-ended {
+    animation-name: none;
+}
+
+@keyframes jumpUp {
+    from {
+        transform: translateY(50px);
+    }
+    to {
+        transform: translateX(0px);
+    }
+}
+
+@keyframes appearFromWithin {
+    from {
+        transform: scale(0.5);
+    }
+    to {
+        transform: scale(1);
+    }
+}
