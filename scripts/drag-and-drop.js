@@ -52,12 +52,14 @@ function moveAt(x, y) {
 }
 
 function onMouseMove(event) {
+    document.body.style.cursor = `grab`;
     if (!draggedCard) return;
     moveAt(event.pageX, event.pageY);
     updatePlaceholderPosition(event.clientX, event.clientY);
 }
 
 function onMouseUp() {
+    document.body.style.cursor = `default`;
     if (!draggedCard) return;
 
     const placeholder = document.querySelector(`.placeholder`);
