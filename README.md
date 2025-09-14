@@ -1,7 +1,6 @@
 # Simple To-Do App
 
-A clean and intuitive To-Do application built with vanilla JavaScript, HTML, and CSS. This project focuses on fundamental web development concepts, including dynamic DOM manipulation, event handling, and client-side data persistence using Local Storage.
-
+A clean and intuitive To-Do application built with vanilla JavaScript, HTML, and CSS. This project focuses on fundamental web development concepts, including dynamic DOM manipulation and event handling.
 ### ✨ [View the Live Demo](https://soustern.github.io/To-Do-App/)
 
 ## Key Features
