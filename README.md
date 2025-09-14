@@ -6,7 +6,6 @@ A clean and intuitive To-Do application built with vanilla JavaScript, HTML, and
 ## Key Features
 
 *   **Add & Remove Tasks:** Easily add new tasks to your list and remove them with a single click.
-*   **Data Persistence:** Your to-do list is automatically saved to your browser's **Local Storage**, so your tasks will be there when you return.
 *   **Clean UI:** A minimalist and user-friendly interface for a distraction-free experience.
   
 ## Tech Stack
@@ -44,7 +43,6 @@ The application follows a simple yet effective architecture:
 
 1.  **Event-Driven Logic:** The application listens for user events (like form submissions and button clicks) to trigger functions.
 2.  **DOM Manipulation:** When tasks are added, removed, or updated, the JavaScript code dynamically creates, modifies, or deletes the corresponding HTML elements in the DOM without requiring a page refresh.
-3.  **Local Storage API:** The entire to-do list is stored as a JSON string in the browser's Local Storage. The application retrieves and parses this data on load, and updates it whenever a change is made, ensuring data persistence.
 
 ## Future Improvements
 
