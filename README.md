@@ -4,8 +4,6 @@ A clean and intuitive To-Do application built with vanilla JavaScript, HTML, and
 
 ### ✨ [View the Live Demo](https://soustern.github.io/To-Do-App/)
 
-![To-Do App Screenshot](https://user-images.githubusercontent.com/47035543/209802058-208b5fba-04ac-4fd9-80ac-a5ca445ae0ed.png)
-
 ## Key Features
 
 *   **Add & Remove Tasks:** Easily add new tasks to your list and remove them with a single click.
