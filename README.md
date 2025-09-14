@@ -9,7 +9,7 @@ A clean and intuitive To-Do application built with vanilla JavaScript, HTML, and
 *   **Add & Remove Tasks:** Easily add new tasks to your list and remove them with a single click.
 *   **Data Persistence:** Your to-do list is automatically saved to your browser's **Local Storage**, so your tasks will be there when you return.
 *   **Clean UI:** A minimalist and user-friendly interface for a distraction-free experience.
-*   
+  
 ## Tech Stack
 
 This project was built from the ground up using core web technologies, demonstrating a strong understanding of the fundamentals.
