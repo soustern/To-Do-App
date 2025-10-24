@@ -1,51 +1,83 @@
-# Simple To-Do App
+# Vanilla JS Kanban Board
 
-A clean and intuitive To-Do application built with vanilla JavaScript, HTML, and CSS. This project focuses on fundamental web development concepts, including dynamic DOM manipulation and event handling.
-### ✨ [View the Live Demo](https://soustern.github.io/To-Do-App/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow?logo=javascript)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![HTML5](https://img.shields.io/badge/HTML5-orange?logo=html5)](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
+[![CSS3](https://img.shields.io/badge/CSS3-blue?logo=css3)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
-## Key Features
+A feature-rich Kanban board application built from the ground up with **vanilla JavaScript (ES6+), HTML5, and CSS3**. This project demonstrates a deep understanding of core web technologies, focusing on a modular architecture, advanced DOM manipulation, and a polished user experience without relying on any external frameworks or libraries.
 
-*   **Add & Remove Tasks:** Easily add new tasks to your list and remove them with a single click.
-*   **Clean UI:** A minimalist and user-friendly interface for a distraction-free experience.
-  
+**✨ [View the Live Demo](https://soustern.github.io/To-Do-App/)**
+
+---
+
+## Technical Highlights & Architectural Decisions
+
+This application was architected to be robust, maintainable, and performant, showcasing best practices in a vanilla JS environment.
+
+### 1. Modular, Event-Driven Architecture
+The application logic is cleanly separated into distinct modules based on functionality (`create-card.js`, `delete-card.js`, `drag-and-drop.js`, etc.). This separation of concerns ensures the codebase is easy to navigate, debug, and extend—a best practice often enforced by frameworks, implemented here manually to demonstrate strong architectural fundamentals.
+
+### 2. Advanced Drag-and-Drop Implementation
+The drag-and-drop functionality was engineered for a smooth and intuitive user experience:
+- **`mousedown` Event:** Initiates the drag, dynamically cloning the card and appending it to the `body` to escape the overflow constraints of the columns.
+- **Performance:** The cloned card's position is updated using the `transform: translate()` CSS property during the `mousemove` event, ensuring hardware-accelerated, GPU-powered animation that is smoother than legacy `top`/`left` positioning.
+- **Dynamic Placeholder:** A placeholder element is intelligently inserted into the list to provide clear visual feedback on the drop location.
+- **Precision Calculation:** The `getDragAfterElement` function calculates the precise insertion point in real-time by comparing the cursor's Y-coordinate against the vertical midpoint of potential sibling elements.
+
+### 3. Dynamic DOM Manipulation & State Management
+Full CRUD (Create, Read, Update, Delete) functionality for tasks is handled via efficient and direct DOM manipulation.
+- **Modals for CRUD:** Task creation and editing are handled through modal windows, preventing page reloads and providing a seamless UX.
+- **Graceful Deletion:** When a card is deleted, it is not instantly removed. Instead, a CSS class is applied, triggering a smooth scale-out and fade animation. The element is only removed from the DOM after the animation completes, using a `transitionend` event listener.
+
+### 4. Modern CSS & UI/UX
+The interface was designed with a modern aesthetic and user experience in mind.
+- **Glassmorphism UI:** Columns and modals use a `backdrop-filter: blur()` to create a stylish, semi-transparent "glass" effect.
+- **Custom CSS Animations:** Subtle animations (`@keyframes`) for events like card creation (`appearFromWithin`) and modal pop-ups (`jumpUp`) enhance the user's perception of interactivity.
+- **Fluid & Responsive Design:** The layout uses modern CSS like Flexbox and `clamp()` for fluid sizing, ensuring a consistent experience across different viewports.
+- **User Customization:** Users can select their preferred background, which is dynamically applied to the `body` element.
+
 ## Tech Stack
 
-This project was built from the ground up using core web technologies, demonstrating a strong understanding of the fundamentals.
+| Category      | Technology                                    |
+|---------------|-----------------------------------------------|
+| **Core Logic**| Vanilla JavaScript (ES6+)                     |
+| **Markup**    | Semantic HTML5                                |
+| **Styling**   | Modern CSS3 (Flexbox, Animations, `clamp()`) |
+| **Code Style**| Modular, Event-Driven                         |
 
-*   **JavaScript (ES6+):** Used for all the application logic, including DOM manipulation, event listeners, and interacting with Local Storage.
-*   **HTML5:** Semantic markup for a structured and accessible layout.
-*   **CSS3:** Custom styling for the user interface, including Flexbox for a responsive layout.
+## Project Structure
 
-## How to Run Locally
+The codebase is organized with a focus on modularity and separation of concerns.
 
-To get a local copy up and running, follow these simple steps.
+```
+/
+├── images/             # Background images (.webp)
+├── scripts/            # Modular JavaScript files
+│   ├── create-card.js
+│   ├── delete-card.js
+│   ├── drag-and-drop.js
+│   ├── edit-card.js
+│   └── select-background.js
+├── index.html          # Main HTML structure
+├── style.css           # All custom styles
+└── reset.css           # CSS reset for browser consistency
+```
 
-### Prerequisites
+## Local Setup
 
-You just need a modern web browser that supports HTML5, CSS3, and JavaScript.
-
-### Installation
+To run this project on your local machine, no special tools are needed—just a modern web browser.
 
 1.  **Clone the repository:**
-    ```sh
+    ```bash
     git clone https://github.com/soustern/To-Do-App.git
     ```
 2.  **Navigate to the project directory:**
-    ```sh
+    ```bash
     cd To-Do-App
     ```
-3.  **Open the `index.html` file in your browser:**
-    *   You can simply double-click the file, or right-click and choose "Open with" your preferred browser.
+3.  **Open the `index.html` file in your browser.**
 
-## Architectural Overview
+## License
 
-The application follows a simple yet effective architecture:
-
-1.  **Event-Driven Logic:** The application listens for user events (like form submissions and button clicks) to trigger functions.
-2.  **DOM Manipulation:** When tasks are added, removed, or updated, the JavaScript code dynamically creates, modifies, or deletes the corresponding HTML elements in the DOM without requiring a page refresh.
-
-## Future Improvements
-
-*   **Edit Tasks:** Implement a feature to allow users to edit the text of an existing task.
-*   **Drag-and-Drop Reordering:** Allow users to reorder tasks by dragging and dropping them.
-*   **Multiple Lists:** Add the ability for users to create and manage multiple to-do lists.
+This project is licensed under the MIT License.
